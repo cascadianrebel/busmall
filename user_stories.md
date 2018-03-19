@@ -7,7 +7,9 @@ As an online retailer, I want to do market analysis on proposed products so that
  
 I want to display three separate images of products for the user to choose from and select their favorite. 
 
-I want at least 20 product images to be compared and randomly rotated. 
+I want at least 20 product images to be compared without duplicating any image that was immediately displayed in the grouping before. 
+
+i want the user to click through the products 25 times. 
 
 Data results should include how many times each product/image was clicked in addition to how often it was shown. 
 
@@ -21,11 +23,11 @@ i want the images to be the focus of the user by using placeholders to ensure th
 
 i want to create a function that places a randomly select product in each of the image place holders.
 
-I want the each picture to change when clicked. 
-
 I want a tally of every time picture is used. 
 
 I want to tally the number of click per picture.
+
+I want the each picture to change when clicked. 
 
 ## Focus Group User
 
