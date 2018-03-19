@@ -1,0 +1,67 @@
+*{
+  box-sizing: border-box;
+}
+html body{
+  margin: 20px;
+  background-color: white;
+}
+html header {
+  border: .5px solid teal;
+  width: 100%;
+  height: auto;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  padding: 10px;
+}
+html header img {
+  float: left;
+}
+header h1 {
+  font-size: 2em;
+  float: left;
+  margin-top: .25em;
+}
+header nav {
+  float: right;
+  border: 1px solid black;
+  position: relative;
+}
+header nav li {
+  display:inline-block;
+  margin: 0;
+  padding: .5em;
+  border: 1px dashed green;
+  line-height: 1.5em;
+  margin-top: 20px;
+}
+main {
+  border: 2px dotted red;
+  width: 100%;
+  position: relative;
+  height: 500px;
+}
+main div {
+  border: 2px dotted blue;
+  height: 100%;
+  width: 20%;
+  float: left;
+}
+main span {
+  border: 2px dashed yellow;
+  width: 80%;
+  float: left;
+  position: relative;
+}
+main span figure {
+  border: 1px solid black;
+  display: inline-block;
+  padding: 5px;
+  width: 32%;
+  align-content: center;
+  margin-bottom: 5px;
+}
+button {
+  width: 100%;
+  border: 1 solid yellow;
+}
