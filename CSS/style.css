@@ -72,6 +72,10 @@ figure img{
   vertical-align: middle;
 
 }
+#results {
+  overflow: scroll;
+  list-style-type: disc;
+}
 button {
   width: 100%;
   border: 1 solid yellow;

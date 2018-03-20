@@ -1,6 +1,5 @@
 'use strict';
 //array to hold products
-
 Product.allProducts = [];
 
 //array to prevent previously displayed products
@@ -11,11 +10,22 @@ var product1 = document.getElementById('product1');
 var product2 = document.getElementById('product2');
 var product3 = document.getElementById('product3');
 
+
+//access the image section; because of the bubbling, it affects the individual images too. 
+var picturesFigure = document.getElementById('picturesFigure');
+
+//results element
+var ulEl = document.getElementById('results');
+
+//click tracker
+Product.totalClicks = 0;
+
 //product constructor
 function Product (filepath, name) {
   this.filepath = filepath;
   this.name = name;
   this.shown = 0;
+  this.clicks = 0;
   Product.allProducts.push(this);
 }
 
@@ -43,8 +53,6 @@ new Product('img/assets/water-can.jpg', 'noWaterCan');
 new Product('img/assets/wine-glass.jpg', 'wineGlass');
 
 
-// Product.container = document.getElementById('imageContainer');
-// Product.pictures = [document.getElementById('product1'), document.getElementById('product2'), document.getElementById('product3')];
 
 function randomProduct() {
   //create 3 random indices
@@ -65,52 +73,49 @@ function randomProduct() {
     console.log('duplicate was caught');
   }
 
-  // //ensure numbers will be different for each
-  // console.log(randomProduct1);
-  // console.log(randomProduct2);
-  // console.log(randomProduct3);
-
   //push images to DOM
   product1.src = Product.allProducts[randomProduct1].filepath;
-  product1.alt = Product.allProducts[randomProduct1].filepath;
+  product1.alt = Product.allProducts[randomProduct1].name;
   product2.src = Product.allProducts[randomProduct2].filepath;
-  product2.alt = Product.allProducts[randomProduct2].filepath;
+  product2.alt = Product.allProducts[randomProduct2].name;
   product3.src = Product.allProducts[randomProduct3].filepath;
-  product3.alt = Product.allProducts[randomProduct3].filepath;
+  product3.alt = Product.allProducts[randomProduct3].name;
 
-  // //increment views
-  // Product.allProducts[randomProduct1].shown++;
-  // Product.allProducts[randomProduct2].shown++;
-  // Product.allProducts[randomProduct3].shown++;
+  //increment views
+  Product.allProducts[randomProduct1].shown++;
+  Product.allProducts[randomProduct2].shown++;
+  Product.allProducts[randomProduct3].shown++;
 
   Product.lastShown = [];
   Product.lastShown.push(randomProduct1);
   Product.lastShown.push(randomProduct2);
   Product.lastShown.push(randomProduct3);
-
-
 }
-// function shownProducts() {
-//   var randomProduct = randomIndex();
-//   while (Product.viewed.includes(randomProduct))
-//     Product.shown.push(randomProduct);
-// }
+function productClick(event){
+  Product.totalClicks++;
+  //use for loop to find image being clicked
+  for(var i in Product.allProducts){
+    if(event.target.alt === Product.allProducts[i].name){
+      Product.allProducts[i].clicks++;
+    }
+  }
+  if (Product.totalClicks > 24){
+    picturesFigure.removeEventListener('click', productClick);
+    showResults();
+  }else{
+    randomProduct();
+  }
+}
 
-// Product.pictures.addEventListener('click',randomProduct());
+function showResults(){
+  for(var i in Product.allProducts){
+    var liEl = document.createElement('li');
+    liEl.textContent = Product.allProducts[i].name + ' was clicked ' + Product.allProducts[i].clicks + ' out of ' + Product.allProducts[i].shown + ' times shown.';
+    ulEl.appendChild(liEl);
+  }
+}
 
-// figureImage1.addEventListener('click',randomProduct1);
-// figureImage2.addEventListener('click',randomProduct2);
-// figureImage3.addEventListener('click',randomProduct3);
 
+picturesFigure.addEventListener('click', productClick);
 
-// function randomProduct2(){
-//   var randomIndex = Math.floor(Math.random()* Product.allProducts.length);
-//   figureImage2.src = Product.allProducts[randomIndex].filepath;
-//   figureImage2.alt = Product.allProducts[randomIndex].name;
-// }
-// function randomProduct3(){
-//   var randomIndex = Math.floor(Math.random()* Product.allProducts.length);
-//   figureImage3.src = Product.allProducts[randomIndex].filepath;
-//   figureImage3.alt = Product.allProducts[randomIndex].name;
-// }
 randomProduct();
