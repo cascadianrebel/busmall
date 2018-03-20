@@ -57,14 +57,19 @@ main span figure {
   border: 1px solid black;
   display: inline-block;
   padding: 5px;
-  width: 32%;
+  width: 100%;
   align-content: center;
   margin-bottom: 5px;
   overflow: hidden;
   height: 100%;
+  position: relative;
 }
-img{
-  max-width:100%;
+figure img{
+  max-width:32%;
+  max-height: 200px;
+  border: 2px solid black;
+  margin: 1%;
+  vertical-align: middle;
 
 }
 button {
