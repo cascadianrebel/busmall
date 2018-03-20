@@ -60,6 +60,7 @@ main span figure {
   width: 32%;
   align-content: center;
   margin-bottom: 5px;
+  overflow: hidden;
 }
 button {
   width: 100%;
