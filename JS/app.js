@@ -65,18 +65,18 @@ function randomProduct() {
     console.log('duplicate was caught');
   }
 
-  //ensure numbers will be different for each
-  console.log(randomProduct1);
-  console.log(randomProduct2);
-  console.log(randomProduct3);
+  // //ensure numbers will be different for each
+  // console.log(randomProduct1);
+  // console.log(randomProduct2);
+  // console.log(randomProduct3);
 
-  // //push images to DOM
-  // product1.src = Product.allProducts[randomProduct1].filepath;
-  // product1.alt = Product.allProducts[randomProduct1].filepath;
-  // product2.src = Product.allProducts[randomProduct2].filepath;
-  // product2.alt = Product.allProducts[randomProduct2].filepath;
-  // product3.src = Product.allProducts[randomProduct3].filepath;
-  // product3.alt = Product.allProducts[randomProduct3].filepath;
+  //push images to DOM
+  product1.src = Product.allProducts[randomProduct1].filepath;
+  product1.alt = Product.allProducts[randomProduct1].filepath;
+  product2.src = Product.allProducts[randomProduct2].filepath;
+  product2.alt = Product.allProducts[randomProduct2].filepath;
+  product3.src = Product.allProducts[randomProduct3].filepath;
+  product3.alt = Product.allProducts[randomProduct3].filepath;
 
   // //increment views
   // Product.allProducts[randomProduct1].shown++;
