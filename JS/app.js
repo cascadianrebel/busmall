@@ -106,7 +106,7 @@ function productClick(event){
       Product.allProducts[i].clicks++;
     }
   }
-  if (Product.totalClicks > 3){
+  if (Product.totalClicks > 24){
     picturesFigure.removeEventListener('click', productClick);
     showResults();
     updateClicks();
