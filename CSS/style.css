@@ -58,20 +58,21 @@ main span {
 }
 main span figure {
   border: 2px solid black;
-  display: inline-block;
+  /* display: inline-block; */
   padding: 5px;
-  width: 90%;
+  width: 100%;
   align-content: center;
   margin-bottom: 5px;
   overflow: hidden;
   height: 200px;
   position: relative;
+  float: left;
 }
 figure img{
   max-width:32%;
   max-height: 200px;
   border: 2px solid black;
-  margin: 1%;
+  margin: 0;
   vertical-align: middle;
 
 }

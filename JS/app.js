@@ -24,6 +24,7 @@ var ulEl = document.getElementById('results');
 
 //click tracker
 Product.totalClicks = 0;
+var maxClicks = 5;
 
 //product constructor
 function Product (filepath, name) {
@@ -38,7 +39,7 @@ function Product (filepath, name) {
 function displayProductData(){
   var productDataString = localStorage.getItem('product');
   var storedProductData = JSON.parse(productDataString);
-  if (storedProductData){
+  if (storedProductData && storedProductData.length){
     Product.allProducts = storedProductData;
     console.log('Loaded from Local Storage');
     return;
@@ -112,9 +113,13 @@ function productClick(event){
   for(var i in Product.allProducts){
     if(event.target.alt === Product.allProducts[i].name){
       Product.allProducts[i].clicks++;
+      //store data as string after every click
+      var saveProductData = JSON.stringify(Product.allProducts);
+      console.log(saveProductData);
+      localStorage.setItem('product', saveProductData);
     }
   }
-  if (Product.totalClicks > 24){
+  if (Product.totalClicks > (maxClicks-1)){
     picturesFigure.removeEventListener('click', productClick);
     showResults();
     updateClicks();
@@ -122,16 +127,13 @@ function productClick(event){
   }else{
     randomProduct();
   }
-  //store data as string after every click
-  var saveProductData = JSON.stringify(Product.allProducts);
-  console.log(saveProductData);
-  // localStorage.setItem('product', saveProductData);
 }
+
 
 function showResults(){
   for(var i in Product.allProducts){
     var liEl = document.createElement('li');
-    liEl.textContent = Product.allProducts[i].name + ' was clicked ' + Product.allProducts[i].clicks + ' out of ' + Product.allProducts[i].shown + ' times shown.';
+    liEl.textContent = Product.allProducts[i].name + ': ' + Product.allProducts[i].clicks + '/' + Product.allProducts[i].shown;
     ulEl.appendChild(liEl);
   }
 }
@@ -144,8 +146,8 @@ function updateClicks(){
 
 picturesFigure.addEventListener('click', productClick);
 
-randomProduct();
 displayProductData();
+randomProduct();
 
 function renderChart() {
 //access the canvas element from the DOM
