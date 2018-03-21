@@ -35,8 +35,10 @@ function Product (filepath, name) {
   productChartName.push(this.name);
 }
 
+// function storeProductData(){
+//   var productDataString = localStorage.get
+// }
 
-//new instances of products
 new Product('img/assets/bag.jpg','r2d2-suitcase');
 new Product('img/assets/banana.jpg', 'bananaCutter');
 new Product('img/assets/bathroom.jpg', 'tPiPad');
@@ -114,6 +116,9 @@ function productClick(event){
   }else{
     randomProduct();
   }
+  //store data as string after every click
+  var saveProductData = JSON.stringify(Product.allProducts);
+  localStorage.setItem('product', saveProductData);
 }
 
 function showResults(){
