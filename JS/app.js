@@ -20,7 +20,7 @@ var productChartClick =[];
 var picturesFigure = document.getElementById('picturesFigure');
 
 //results element
-var ulEl = document.getElementById('results');
+// var ulEl = document.getElementById('results');
 
 //click tracker
 Product.totalClicks = 0;
@@ -121,7 +121,7 @@ function productClick(event){
   }
   if (Product.totalClicks > (maxClicks-1)){
     picturesFigure.removeEventListener('click', productClick);
-    showResults();
+    // showResults();
     updateClicks();
     renderChart();
   }else{
@@ -130,13 +130,13 @@ function productClick(event){
 }
 
 
-function showResults(){
-  for(var i in Product.allProducts){
-    var liEl = document.createElement('li');
-    liEl.textContent = Product.allProducts[i].name + ': ' + Product.allProducts[i].clicks + '/' + Product.allProducts[i].shown;
-    ulEl.appendChild(liEl);
-  }
-}
+// function showResults(){
+//   for(var i in Product.allProducts){
+//     var liEl = document.createElement('li');
+//     liEl.textContent = Product.allProducts[i].name + ': ' + Product.allProducts[i].clicks + '/' + Product.allProducts[i].shown;
+//     ulEl.appendChild(liEl);
+//   }
+// }
 function updateClicks(){
   for(var i in Product.allProducts){
     // productChartClick.push(Product.allProducts[i].clicks);
