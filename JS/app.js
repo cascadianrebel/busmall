@@ -35,30 +35,36 @@ function Product (filepath, name) {
   productChartName.push(this.name);
 }
 
-// function storeProductData(){
-//   var productDataString = localStorage.get
-// }
+function displayProductData(){
+  var productDataString = localStorage.getItem('product');
+  var storedProductData = JSON.parse(productDataString);
+  if (storedProductData){
+    Product.allProducts = storedProductData;
+    console.log('Loaded from Local Storage');
+    return;
+  }
 
-new Product('img/assets/bag.jpg','r2d2-suitcase');
-new Product('img/assets/banana.jpg', 'bananaCutter');
-new Product('img/assets/bathroom.jpg', 'tPiPad');
-new Product('img/assets/boots.jpg', 'noRainBoots');
-new Product('img/assets/breakfast.jpg', 'breakfastMaker');
-new Product('img/assets/bubblegum.jpg', 'meatGum');
-new Product('img/assets/chair.jpg', 'chair');
-new Product('img/assets/cthulhu.jpg', 'cthulhu');
-new Product('img/assets/dog-duck.jpg', 'dogBeak');
-new Product('img/assets/dragon.jpg', 'dragonMeat');
-new Product('img/assets/pen.jpg', 'uPencils');
-new Product('img/assets/pet-sweep.jpg', 'dogMop');
-new Product('img/assets/scissors.jpg', 'pizzaScissors');
-new Product('img/assets/shark.jpg','sharkAttack');
-new Product('img/assets/sweep.png', 'babyMop');
-new Product('img/assets/tauntaun.jpg', 'hothSleepingBag');
-new Product('img/assets/unicorn.jpg', 'unicornMeat');
-new Product('img/assets/usb.gif', 'tenticleUsb');
-new Product('img/assets/water-can.jpg', 'noWaterCan');
-new Product('img/assets/wine-glass.jpg', 'wineGlass');
+  new Product('img/assets/bag.jpg','r2d2-suitcase');
+  new Product('img/assets/banana.jpg', 'bananaCutter');
+  new Product('img/assets/bathroom.jpg', 'tPiPad');
+  new Product('img/assets/boots.jpg', 'noRainBoots');
+  new Product('img/assets/breakfast.jpg', 'breakfastMaker');
+  new Product('img/assets/bubblegum.jpg', 'meatGum');
+  new Product('img/assets/chair.jpg', 'chair');
+  new Product('img/assets/cthulhu.jpg', 'cthulhu');
+  new Product('img/assets/dog-duck.jpg', 'dogBeak');
+  new Product('img/assets/dragon.jpg', 'dragonMeat');
+  new Product('img/assets/pen.jpg', 'uPencils');
+  new Product('img/assets/pet-sweep.jpg', 'dogMop');
+  new Product('img/assets/scissors.jpg', 'pizzaScissors');
+  new Product('img/assets/shark.jpg','sharkAttack');
+  new Product('img/assets/sweep.png', 'babyMop');
+  new Product('img/assets/tauntaun.jpg', 'hothSleepingBag');
+  new Product('img/assets/unicorn.jpg', 'unicornMeat');
+  new Product('img/assets/usb.gif', 'tenticleUsb');
+  new Product('img/assets/water-can.jpg', 'noWaterCan');
+  new Product('img/assets/wine-glass.jpg', 'wineGlass');
+}
 
 
 
@@ -118,7 +124,8 @@ function productClick(event){
   }
   //store data as string after every click
   var saveProductData = JSON.stringify(Product.allProducts);
-  localStorage.setItem('product', saveProductData);
+  console.log(saveProductData);
+  // localStorage.setItem('product', saveProductData);
 }
 
 function showResults(){
@@ -138,6 +145,7 @@ function updateClicks(){
 picturesFigure.addEventListener('click', productClick);
 
 randomProduct();
+displayProductData();
 
 function renderChart() {
 //access the canvas element from the DOM
