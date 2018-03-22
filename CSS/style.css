@@ -105,5 +105,5 @@ footer h2 {
   font-family: Arial, Helvetica, sans-serif;
 }
 canvas {
-  border: 3px dotted red;
+  background-color: white;
 }
