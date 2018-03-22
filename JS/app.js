@@ -24,7 +24,7 @@ var picturesFigure = document.getElementById('picturesFigure');
 
 //click tracker
 Product.totalClicks = 0;
-var maxClicks = 5;
+var maxClicks = 25;
 
 //product constructor
 function Product (filepath, name) {
@@ -159,7 +159,7 @@ function renderChart() {
   var ctx = document.getElementById('productChart').getContext('2d');
   var arrayOfColors = ['red','orange','yellow','green','blue','purple','pink','red','orange','yellow','green','blue', 'purple','pink','red','orange','yellow','green','blue','purple','pink','red','orange'];
   new Chart(ctx, {
-    type: 'bar',
+    type: 'horizontalBar',
     data:{
       labels: productChartName,
       datasets: [{
