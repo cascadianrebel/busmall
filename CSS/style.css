@@ -51,6 +51,10 @@ header nav li {
   color: white;
   list-style-type: none;
 }
+header nav li:hover {
+  background-color: aliceblue;
+  color:black;
+}
 main {
   /* border: 2px dotted red; */
   width: 90%;
@@ -94,10 +98,13 @@ figure img{
   padding: 1em;
   background-color: gray;
 }
+figure img:hover {
+  border: 3px solid white;
+  cursor: pointer;
+}
 footer {
   background-color: gray;
   color: white;
-  
   padding: 10px;
   }
 footer h2 {
@@ -106,4 +113,5 @@ footer h2 {
 }
 canvas {
   background-color: white;
+  width: 100%;
 }

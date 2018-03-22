@@ -140,7 +140,6 @@ function productClick(event){
 // }
 function updateClicks(){
   for(var i in Product.allProducts){
-    // productChartClick.push(Product.allProducts[i].clicks);
     productChartClick[i] = Product.allProducts[i].clicks;
   }
 }
@@ -159,7 +158,7 @@ function renderChart() {
   var ctx = document.getElementById('productChart').getContext('2d');
   var arrayOfColors = ['red','orange','yellow','green','blue','purple','pink','red','orange','yellow','green','blue', 'purple','pink','red','orange','yellow','green','blue','purple','pink','red','orange'];
   new Chart(ctx, {
-    type: 'horizontalBar',
+    type: 'bar',
     data:{
       labels: productChartName,
       datasets: [{
@@ -170,11 +169,11 @@ function renderChart() {
     },
     options: {
       scales: {
-        yAxes: {
+        yAxes: [{
           ticks: {
-            beginAtZero: true
+            beginAtZero:true,
           }
-        }
+        }]
       }
     }
   });
