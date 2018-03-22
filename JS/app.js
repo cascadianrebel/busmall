@@ -115,7 +115,7 @@ function productClick(event){
       Product.allProducts[i].clicks++;
       //store data as string after every click
       var saveProductData = JSON.stringify(Product.allProducts);
-      console.log(saveProductData);
+      // console.log(saveProductData);
       localStorage.setItem('product', saveProductData);
     }
   }
@@ -123,6 +123,7 @@ function productClick(event){
     picturesFigure.removeEventListener('click', productClick);
     // showResults();
     updateClicks();
+    updateNames();
     renderChart();
   }else{
     randomProduct();
@@ -143,6 +144,11 @@ function updateClicks(){
     productChartClick[i] = Product.allProducts[i].clicks;
   }
 }
+function updateNames(){
+  for(var i in Product.allProducts){
+    productChartName[i] = Product.allProducts[i].name;
+  }
+}
 
 picturesFigure.addEventListener('click', productClick);
 
@@ -150,7 +156,6 @@ displayProductData();
 randomProduct();
 
 function renderChart() {
-//access the canvas element from the DOM
   var ctx = document.getElementById('productChart').getContext('2d');
   var arrayOfColors = ['red','orange','yellow','green','blue','purple','pink','red','orange','yellow','green','blue', 'purple','pink','red','orange','yellow','green','blue','purple','pink','red','orange'];
   new Chart(ctx, {

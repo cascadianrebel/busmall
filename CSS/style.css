@@ -3,89 +3,107 @@
 }
 html body{
   margin: 20px;
-  background-color: white;
+  background-color: #01456a;
 }
 html header {
   border: .5px solid teal;
   width: 100%;
-  height: auto;
   position: relative;
   overflow: hidden;
   text-align: center;
   padding: 10px;
-}
-html header img {
-  float: left;
+  background-color: gray;
+  
 }
 header h1 {
-  font-size: 2em;
+  background-color: red;
+  color: white;
+  font-size: 4em;
   float: left;
-  margin-top: .25em;
+  margin: .25em;
+  line-height: .75em;
+  padding: .5em 0.4em .5em .4em;
+  font-family: 'Anton', sans-serif;
 }
+header > h2 {
+  color: white;
+  float: left;
+  margin-top: 6em;
+  font-family: 'verdana', sans-serif;
+}
+
 header nav {
   float: right;
-/*   border: 1px solid black; */
+  margin-top: 9em;
+  margin-right: 3em;
+  margin-bottom: -1em;
   position: relative;
 }
 header nav li {
-  display:inline;
+    font-family: 'verdana', sans-serif;
   float: right;
-  margin: 0px 0px 0px 0px;
   padding: .5em;
   border: 2px solid black;
   line-height: 1.5em;
   margin-top: 20px;
   border-radius: 15px 15px 0px 0px;
+  background-color: #00706e;
+  color: white;
+  list-style-type: none;
 }
 main {
-  border: 2px dotted red;
-  width: 100%;
+  /* border: 2px dotted red; */
+  width: 90%;
   position: relative;
-  height: 500px;
+  height: 300px;
+  margin-left: 5%;
+  font-family: 'verdana', sans-serif;
+  display: block;
+  color: white;
+  text-align:center;
 }
-main div {
-  border: 2px dotted blue;
-  height: 100%;
-  width: 20%;
-  float: left;
+main span p {
+  margin-top:1em;
+  background-color:black;
 }
+
 main span {
-  border: 2px dashed yellow;
-  width: 80%;
+  /* border: 2px dashed yellow; */
+  height: 100%;
+  width: 100%;
   float: left;
   position: relative;
   overflow: hidden;
+  background-color: #00706e;
 }
 main span figure {
   border: 2px solid black;
-  /* display: inline-block; */
-  padding: 5px;
+  height: 15em;
+  padding: 1em;
   width: 100%;
-  align-content: center;
-  margin-bottom: 5px;
-  overflow: hidden;
-  height: 200px;
-  position: relative;
-  float: left;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 figure img{
   max-width:32%;
-  max-height: 200px;
+  max-height: 100%;
   border: 2px solid black;
   margin: 0;
   vertical-align: middle;
-
+  padding: 1em;
+  background-color: gray;
 }
-#resultsSidebar{
-  overflow: scroll;
-  max-height: 100%;
-  position: relative;
-  list-style-type: circle;
+footer {
+  background-color: gray;
+  color: white;
+  
+  padding: 10px;
+  }
+footer h2 {
+  margin-left: 10%;
+  font-family: Arial, Helvetica, sans-serif;
 }
-#results {
-  list-style-type: square;
-}
-button {
-  width: 100%;
-  border: 1 solid yellow;
+canvas {
+  border: 3px dotted red;
 }
