@@ -20,10 +20,11 @@ var productChartClick =[];
 var picturesFigure = document.getElementById('picturesFigure');
 
 //results element
-var ulEl = document.getElementById('results');
+// var ulEl = document.getElementById('results');
 
 //click tracker
 Product.totalClicks = 0;
+var maxClicks = 25;
 
 //product constructor
 function Product (filepath, name) {
@@ -38,7 +39,7 @@ function Product (filepath, name) {
 function displayProductData(){
   var productDataString = localStorage.getItem('product');
   var storedProductData = JSON.parse(productDataString);
-  if (storedProductData){
+  if (storedProductData && storedProductData.length){
     Product.allProducts = storedProductData;
     console.log('Loaded from Local Storage');
     return;
@@ -112,47 +113,53 @@ function productClick(event){
   for(var i in Product.allProducts){
     if(event.target.alt === Product.allProducts[i].name){
       Product.allProducts[i].clicks++;
+      //store data as string after every click
+      var saveProductData = JSON.stringify(Product.allProducts);
+      // console.log(saveProductData);
+      localStorage.setItem('product', saveProductData);
     }
   }
-  if (Product.totalClicks > 24){
+  if (Product.totalClicks > (maxClicks-1)){
     picturesFigure.removeEventListener('click', productClick);
-    showResults();
+    // showResults();
     updateClicks();
+    updateNames();
     renderChart();
   }else{
     randomProduct();
   }
-  //store data as string after every click
-  var saveProductData = JSON.stringify(Product.allProducts);
-  console.log(saveProductData);
-  // localStorage.setItem('product', saveProductData);
 }
 
-function showResults(){
-  for(var i in Product.allProducts){
-    var liEl = document.createElement('li');
-    liEl.textContent = Product.allProducts[i].name + ' was clicked ' + Product.allProducts[i].clicks + ' out of ' + Product.allProducts[i].shown + ' times shown.';
-    ulEl.appendChild(liEl);
-  }
-}
+
+// function showResults(){
+//   for(var i in Product.allProducts){
+//     var liEl = document.createElement('li');
+//     liEl.textContent = Product.allProducts[i].name + ': ' + Product.allProducts[i].clicks + '/' + Product.allProducts[i].shown;
+//     ulEl.appendChild(liEl);
+//   }
+// }
 function updateClicks(){
   for(var i in Product.allProducts){
     // productChartClick.push(Product.allProducts[i].clicks);
     productChartClick[i] = Product.allProducts[i].clicks;
   }
 }
+function updateNames(){
+  for(var i in Product.allProducts){
+    productChartName[i] = Product.allProducts[i].name;
+  }
+}
 
 picturesFigure.addEventListener('click', productClick);
 
-randomProduct();
 displayProductData();
+randomProduct();
 
 function renderChart() {
-//access the canvas element from the DOM
   var ctx = document.getElementById('productChart').getContext('2d');
   var arrayOfColors = ['red','orange','yellow','green','blue','purple','pink','red','orange','yellow','green','blue', 'purple','pink','red','orange','yellow','green','blue','purple','pink','red','orange'];
   new Chart(ctx, {
-    type: 'bar',
+    type: 'horizontalBar',
     data:{
       labels: productChartName,
       datasets: [{
